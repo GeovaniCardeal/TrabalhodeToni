@@ -3,15 +3,16 @@
 #Trablho feito por: Geovani Machado, Nadson Pereira e Pedro Yuri
 
 if [ "$(id -u)" -ne 0 ]; then  #$(id -u): Obtém o ID do usuário atual. #-ne 0: Verifica se o ID do usuário é 0 (que corresponde ao root (adm) ).
-    #Se não for root, irá fechar.
+    # Se não for root(0) , irá fechar.
     echo "Este script deve ser executado como root."
     exit 1
 fi
 
 check_cpu() {
     echo "=============================="   # check_cpu: Define uma função para verificar o uso da CPU.
-    echo "          USO DA CPU          "   # top -bn1: Executa o comando top uma vez (-b para modo batch, -n1 para uma execução
-    echo "=============================="   # rep "Cpu(s)": Filtra a saída para mostrar apenas a linha relacionada ao uso da CPU.
+    echo "          USO DA CPU          "   # top -bn1: Executa o comando top uma vez (-b para modo batch(executando comando sem a interação do usuario), 
+    echo "=============================="   # (-n1 faz executar 1vez )
+                                            # grep "Cpu(s)": busca e Filtra a saída para mostrar apenas a linha relacionada ao uso da CPU.
     
     top -bn1 | grep "Cpu(s)"                #TERMOS DA CPU:
                                             # us(user): Tempo gasto executando processos de usuários. 
@@ -55,7 +56,7 @@ check_uptime() {                            # check_uptime: Define uma função 
     echo "         TEMPO DE ATIVIDADE    "
     echo "=============================="
     uptime                                  # uptime Exibe o tempo de atividade do sistema, juntamente com o número de usuários e a carga média.
-}                                           # O sistema imprime nesta ordem : Hora atual, Tempo de atividade, 
+}                                           # O sistema imprime nesta ordem : Hora atual, Tempo de atividade; 
                                             # Número de usuários logados (CASO TENHA 2 USUARIOS UM DOS USUARIO É O ROOT) 
                                             # Load average Carga média do sistema nos últimos 1, 5 e 15 minutos
 
@@ -76,7 +77,7 @@ while true; do                                 # Inicia um loop
     show_menu                                  # Chama a função para mostrar o menu.
     read -p "Escolha uma opção [1-7]: " OPTION # read captura O que o usuario escreveu, -p Mostra a mensagem escolha uma opção [1,7]
                                                # OPTION variável onde a entrada do usuário será armazenada 
-                                               # (Não é necessário declarar a variável OPTION O Bash cria essa variável, quando usamos read
+                                               # (Não é necessário declarar a variável OPTION O Bash cria essa variável, quando usamos read)
     
     
     
@@ -85,7 +86,7 @@ while true; do                                 # Inicia um loop
                        # 1-5: Chama a função correspondente para cada opção.
                         # 6: Exibe uma mensagem e encerra o script com sucesso.
                           # *: Se a variável OPTION não corresponder a nenhum dos padrões anteriores 1 a 6 sera executado o comando associado a *   
-                           # O *funciona como um coringa no Bash
+                           # O * funciona como um "coringa" no Bash
         1) 
             check_cpu
             ;;
