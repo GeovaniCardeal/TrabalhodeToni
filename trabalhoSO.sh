@@ -2,17 +2,18 @@
 
 #Trablho feito por: Geovani Machado, Nadson Pereira e Pedro Yuri
 
-if [ "$(id -u)" -ne 0 ]; then
+if [ "$(id -u)" -ne 0 ]; then  #$(id -u): Obtém o ID do usuário atual. #-ne 0: Verifica se o ID do usuário é 0 (que corresponde ao root (adm) ).
+    #Se não for root, irá fechar.
     echo "Este script deve ser executado como root."
     exit 1
 fi
 
 check_cpu() {
-    echo "=============================="
-    echo "          USO DA CPU          "
-    echo "=============================="
-    top -bn1 | grep "Cpu(s)"
-}
+    echo "=============================="   # check_cpu: Define uma função para verificar o uso da CPU.
+    echo "          USO DA CPU          "   # top -bn1: Executa o comando top uma vez (-b para modo batch, -n1 para uma execução
+    echo "=============================="   # rep "Cpu(s)": Filtra a saída para mostrar apenas a linha relacionada ao uso da CPU.
+    top -bn1 | grep "Cpu(s)"                #
+} 
 
 check_memory() {
     echo "=============================="
