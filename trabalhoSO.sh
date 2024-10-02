@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/bin/bash   #Especifica que o script tem que ser lido como um bash
 
 #Trablho feito por: Geovani Machado, Nadson Pereira e Pedro Yuri
 
-if [ "$(id -u)" -ne 0 ]; then  #$(id -u): Obtém o ID do usuário atual. #-ne 0: Verifica se o ID do usuário é 0 (que corresponde ao root (adm) ).
+if [ "$(id -u)" -ne 0 ]; then #if = se #$(id -u): Obtém o ID do usuário atual. #-ne 0: Verifica se o ID do usuário é 0 (que corresponde ao root (adm) ).
     # Se não for root(0) , irá fechar.
     echo "Este script deve ser executado como root."
     exit 1
-fi
+fi # fecha o if
 
 check_cpu() {
     echo "=============================="   # check_cpu: Define uma função para verificar o uso da CPU.
