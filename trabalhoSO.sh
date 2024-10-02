@@ -45,7 +45,9 @@ check_top_processes() {                     # check_top_processes: Define uma fu
     echo "=============================="
     echo "    PROCESSOS MAIS PESADOS     "
     echo "=============================="
-    ps aux --sort=-%mem | head -n 10        # ps aux --sort=-%mem:  Mostra todos os processos, ordenados pelo uso de memória em ordem decrescente.
+    ps aux --sort=-%mem | head -n 10        # ps aux:  Mostra todos os processos 
+                                            # --sort=-%mem: ordena pelo uso de memória em ordem decrescente.
+                                            # head -n 10: limita a lista em 10
 }
 
 check_uptime() {                            # check_uptime: Define uma função para mostrar o tempo que o sistema está ativo.
